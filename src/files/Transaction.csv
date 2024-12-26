@@ -1,0 +1,9 @@
+Type,ID,Name,Date,Amount,AccountNumber,RecipientAccount
+depositTransaction,1,laila ali,18-12-2024 14:29,5000.0,11111,
+transferTransaction,2,laila ali,18-12-2024 14:29,2000.0,11111,11112,
+creditCardTransaction,3,laila ali,18-12-2024 14:30,2000.0,11112,
+creditCardTransaction,4,laila ali,18-12-2024 14:30,10000.0,11111,
+depositTransaction,5,khaled omar,18-12-2024 22:20,20000.0,11112,
+depositTransaction,6,khaled omar,18-12-2024 22:24,5000.0,11112,
+creditCardTransaction,7,hagar mahmoud,20-12-2024 15:37,10000.0,11114,
+creditCardTransaction,8,hagar mahmoud,20-12-2024 15:38,5000.0,11114,

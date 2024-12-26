@@ -1,0 +1,5 @@
+Name,AccountNumber,Status,Type,Balance,HasCreditCard,CreationDate,ExpirationDate,LoyaltyPoint
+laila ali,11111,active,saving account,30000.0,false,null,null,0
+khaled omar,11112,active,current account,30000.0,false,null,null,0
+karim abdallah,11113,active,saving account,10000.0,false,null,null,0
+hagar mahmoud,11114,active,current account,25010.0,true,20-12-2024,20-12-2028,5

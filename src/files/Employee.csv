@@ -1,0 +1,5 @@
+ID,FirstName,LastName,Username,Password,Address,Position,TelephoneNumber,GraduatedCollege,TotalGrade,YearOfGraduation
+1,maram,ali,maram-ali,123456,shubra,manager,1014900153,ainShams,excellent,2027
+2,omar,ahmed,omar-ahmed,123,helwan,manager,1288812397,helwan,excellent,2012
+3,khadija,mostafa,khadija-mostafa,10052004,banha,teller,1015900162,banha,v.good,2010
+4,hagar,ahmed,hagar-ahmed,123,shubra,teller,1014900153,ainShams,excellent,2015
