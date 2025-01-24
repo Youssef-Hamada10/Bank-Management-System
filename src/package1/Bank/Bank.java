@@ -111,61 +111,62 @@ public class Bank {
     }
 
     private void writeToFile(String fileName, String type){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             if (type.equals("employee")){
-                writer.write("ID,FirstName,LastName,Username,Password,Address,Position,TelephoneNumber,GraduatedCollege,TotalGrade,YearOfGraduation");
-                writer.newLine();
+                bw.write("ID,FirstName,LastName,Username,Password,Address,Position,TelephoneNumber,GraduatedCollege,TotalGrade,YearOfGraduation");
+                bw.newLine();
                 for (Employee emp : Bank.employees){
-                    writer.write(emp.getID() + "," + emp.getFirstName() + "," + emp.getLastName() + "," +
+                    bw.write(emp.getID() + "," + emp.getFirstName() + "," + emp.getLastName() + "," +
                             emp.getUsername() + "," + emp.getPassword() + "," + emp.getAddress() + "," + emp.getPosition() + "," +
                             emp.getTelephoneNumber() + "," + emp.getGraduatedCollege() + "," + emp.getTotalGrade() + "," + emp.getYearOfGraduation());
-                    writer.newLine();
+                    bw.newLine();
                 }
             } else if (type.equals("client")) {
-                writer.write("ID,FirstName,LastName,UserName,Password,Address,TelephoneNumber,CreatedBy");
-                writer.newLine();
+                bw.write("ID,FirstName,LastName,UserName,Password,Address,TelephoneNumber,CreatedBy");
+                bw.newLine();
                 for (Client cli : Bank.clients){
-                    writer.write(cli.getID() + "," + cli.getFirstName() + "," + cli.getLastName() + "," +
+                    bw.write(cli.getID() + "," + cli.getFirstName() + "," + cli.getLastName() + "," +
                             cli.getUsername() + "," + cli.getPassword() + "," + cli.getAddress() + "," +
                             cli.getTelephoneNumber() + "," + cli.getCreatedBy());
-                    writer.newLine();
+                    bw.newLine();
                 }
             } else if (type.equals("account")) {
-                writer.write("Name,AccountNumber,Status,Type,Balance,HasCreditCard,CreationDate,ExpirationDate,LoyaltyPoint");
-                writer.newLine();
+                bw.write("Name,AccountNumber,Status,Type,Balance,HasCreditCard,CreationDate,ExpirationDate,LoyaltyPoint");
+                bw.newLine();
                 for (Account acc : Bank.accounts){
-                    writer.write(acc.getClientName() + "," + acc.getAccountNumber() + "," + acc.getAccountStatus() + "," +
+                    bw.write(acc.getClientName() + "," + acc.getAccountNumber() + "," + acc.getAccountStatus() + "," +
                             acc.getAccountType() + "," + acc.getBalance() + "," + acc.getHasCreditCard() + "," +
                             acc.creditCard.getDate() + "," + acc.creditCard.getExpDate() + "," + acc.creditCard.getLoyaltyPoints());
-                    writer.newLine();
+                    bw.newLine();
                 }
             } else if (type.equals("transaction")){
-                writer.write("Type,ID,Name,Date,Amount,AccountNumber,RecipientAccount");
-                writer.newLine();
+                bw.write("Type,ID,Name,Date,Amount,AccountNumber,RecipientAccount");
+                bw.newLine();
                 for (Transaction trans : Bank.transactions){
                     if (trans instanceof TransferTransaction){
-                        writer.write("transferTransaction" + "," + trans.getId() + "," + trans.getClientName() + "," +
+                        bw.write("transferTransaction" + "," + trans.getId() + "," + trans.getClientName() + "," +
                                 trans.getTransactionDate() + "," + trans.getAmount() + "," + ((TransferTransaction)trans).getSenderAccount() + "," +
                                 ((TransferTransaction)trans).getRecipientAccount() + ",");
-                        writer.newLine();
+                        bw.newLine();
                     } else if (trans instanceof WithDrawTransaction) {
-                        writer.write("withdrawTransaction" + "," +
+                        bw.write("withdrawTransaction" + "," +
                                 trans.getId() + "," + trans.getClientName() + "," + trans.getTransactionDate() + "," +
                                 trans.getAmount() + "," + ((WithDrawTransaction)trans).getAccountNumber() +"," );
-                        writer.newLine();
+                        bw.newLine();
                     } else if (trans instanceof DepositTransaction) {
-                        writer.write("depositTransaction" + "," +
+                        bw.write("depositTransaction" + "," +
                                 trans.getId() + "," + trans.getClientName() + "," + trans.getTransactionDate() + "," +
                                 trans.getAmount() + "," + ((DepositTransaction)trans).getAccountNumber() +"," );
-                        writer.newLine();
+                        bw.newLine();
                     } else {
-                        writer.write("creditCardTransaction" + "," +
+                        bw.write("creditCardTransaction" + "," +
                                 trans.getId() + "," + trans.getClientName() + "," + trans.getTransactionDate() + "," +
                                 trans.getAmount() + "," + ((CreditCardTransaction)trans).getAccountNumber() +"," );
-                        writer.newLine();
+                        bw.newLine();
                     }
                 }
             }
+            bw.close();
         } catch (FileNotFoundException e){
             System.out.println(e.getMessage());
         } catch (IOException e) {
@@ -173,6 +174,7 @@ public class Bank {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
+
     }
 
     private void readFromFile(String fileName, String type){
@@ -286,6 +288,7 @@ public class Bank {
                     }
                 }
             }
+            br.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
